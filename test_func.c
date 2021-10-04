@@ -5,6 +5,7 @@
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 */
+int		ft_tolower(int c);
 int		ft_toupper(int c);
 
 int	main(void)
@@ -25,10 +26,15 @@ int	main(void)
 	{
 		if (ft_toupper(i) != toupper(i))
 		{
-			printf("Error in %d\n", i);
+			printf("Error in %d (ft_toupper)\n", i);
 			break;
 		}
-		printf("%d. %c = %c\n", i, i, ft_toupper(i));
+		if (ft_tolower(i) != tolower(i))
+		{
+			printf("Error in %d (ft_tower)\n", i);
+			break;
+		}
+		printf("%d. %c = %c %c \n", i, i, ft_toupper(i), ft_tolower(i));
 	}
 	return (0);
 }
