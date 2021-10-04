@@ -8,6 +8,7 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 */
 char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
 
 int	main(void)
 {
@@ -52,5 +53,16 @@ int	main(void)
 	printf("%s\n", ft_strchr(s, 'r'));
 	printf("%s\n", ft_strchr(s, 'd'));
 	printf("%s\n", ft_strchr(s, '\0'));
+	printf("%s\n", ft_strchr(s, 'a'));
+	printf("%s\n", ft_strrchr(s, 'H'));
+	printf("%s\n", ft_strrchr(s, 'e'));
+	printf("%s\n", ft_strrchr(s, 'l'));
+	printf("%s\n", ft_strrchr(s, 'o'));
+	printf("%s\n", ft_strrchr(s, ' '));
+	printf("%s\n", ft_strrchr(s, 'w'));
+	printf("%s\n", ft_strrchr(s, 'r'));
+	printf("%s\n", ft_strrchr(s, 'd'));
+	printf("%s\n", ft_strrchr(s, '\0'));
+	printf("%s\n", ft_strrchr(s, 'a'));
 	return (0);
 }
