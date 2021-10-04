@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/04 18:41:21 by eestelle          #+#    #+#             */
+/*   Updated: 2021/10/04 18:48:16 by eestelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stddef.h>
 
-typedef	unsigned long long ull;
+typedef unsigned long long	t_ull;
 
 static	void	*ft_completion(ull *ptrs, size_t len, ull c)
 {	
 	while (len--)
 	{
-		ptrs[0] = c;	
-		ptrs[1] = c;	
-		ptrs[2] = c;	
-		ptrs[3] = c;	
-		ptrs[4] = c;	
-		ptrs[5] = c;	
-		ptrs[6] = c;	
-		ptrs[7] = c;	
+		ptrs[0] = c;
+		ptrs[1] = c;
+		ptrs[2] = c;
+		ptrs[3] = c;
+		ptrs[4] = c;
+		ptrs[5] = c;
+		ptrs[6] = c;
+		ptrs[7] = c;
 		ptrs += 8;
 	}
 	return (ptrs);
@@ -30,7 +42,6 @@ void	*ft_memset(void *s, int c, size_t n)
 	cccccccc |= cccccccc << 8;
 	cccccccc |= cccccccc << 16;
 	cccccccc |= cccccccc << 32;
-
 	ptrs = (void *)ft_completion((ull *)ptrs, n / 64, cccccccc);
 	len = (n % 64) / 8;
 	while (len)
