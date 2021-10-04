@@ -7,8 +7,10 @@ void	ft_bzero(void *s, size_t n);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 */
+size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 int	main(void)
 {
@@ -43,6 +45,8 @@ int	main(void)
 		printf("%d. %c = %c %c \n", i, i, ft_toupper(i), ft_tolower(i));
 	}
 	*/
+	// test strchr and strrchr
+	/*
 	char	s[] = "Hello world";
 	printf("%s\n", ft_strchr(s, 'H'));
 	printf("%s\n", ft_strchr(s, 'e'));
@@ -64,5 +68,12 @@ int	main(void)
 	printf("%s\n", ft_strrchr(s, 'd'));
 	printf("%s\n", ft_strrchr(s, '\0'));
 	printf("%s\n", ft_strrchr(s, 'a'));
+	*/
+
+	char	word[] = "Hello, world!";
+	char	copy[14];
+	printf("len(\"%s\") = %zu\n", word, ft_strlen(word));
+	printf("copy = %s\n", ft_memcpy(copy, word, 14));
+	
 	return (0);
 }
