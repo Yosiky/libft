@@ -5,12 +5,16 @@ void	*ft_memset(void *s, int c, size_t n);
 
 int	main(void)
 {
-	const int	size = 10;
+	const int	size = 15;
 	char		str[size];
 
-	str[size - 1] = '\0';
-	ft_memset(str, 'c', size - 1);
-	for (int i = 1; i <= size; i++)
-		printf("%d. %c\n", i, str[i - 1]);
+	memset(str, 0, size);
+	for (int i = 0; i < size; i++)
+	{
+		memset(str, 0, i);
+		printf("%d. \tstr = '%s'\n", i, str); 
+		ft_memset(str, 'c', i);
+		printf("\tstr = '%s'\n", str);
+	}
 	return (0);
 }

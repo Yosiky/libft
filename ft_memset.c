@@ -22,22 +22,22 @@ static	void	*ft_completion(ull *ptrs, size_t len, ull c)
 void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t		len;	
-	ull			ptrs;
+	void		*ptrs;
 	ull			cccccccc;
 
-	ptrs = (ull)s;
-	// Create value with 64 bits
+	ptrs = s;
 	cccccccc = (unsigned char)c;
 	cccccccc |= cccccccc << 8;
 	cccccccc |= cccccccc << 16;
 	cccccccc |= cccccccc << 32;
 
-	ptrs = (ull)ft_completion((void *)ptrs, n / 64, cccccccc);
-	len = n % 64 - n % 8;
+	ptrs = (void *)ft_completion((ull *)ptrs, n / 64, cccccccc);
+	len = (n % 64) / 8;
 	while (len)
 	{
-		*((ull *)ptrs++) = cccccccc;
-		len -= 8;
+		*((ull *)ptrs) = cccccccc;
+		ptrs += 8;
+		len--;
 	}
 	len = n % 8;
 	while (len--)
