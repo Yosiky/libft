@@ -73,7 +73,7 @@ int	main(void)
 	char	word[] = "Hello, world!";
 	char	copy[14];
 	printf("len(\"%s\") = %zu\n", word, ft_strlen(word));
-	printf("copy = %s\n", ft_memcpy(copy, word, 14));
+	printf("copy = %s\n", (char *)ft_memcpy(copy, word, 14));
 	
 	return (0);
 }
