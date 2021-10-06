@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-/*
+
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-*/
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_memcmp(void *s1, void *s2, size_t n);
 
 int	main(void)
 {
@@ -69,11 +70,28 @@ int	main(void)
 	printf("%s\n", ft_strrchr(s, '\0'));
 	printf("%s\n", ft_strrchr(s, 'a'));
 	*/
-
+	// ft_strncmp ft_memcmp
 	char	word[] = "Hello, world!";
 	char	copy[14];
 	printf("len(\"%s\") = %zu\n", word, ft_strlen(word));
 	printf("copy = %s\n", (char *)ft_memcpy(copy, word, 14));
-	
+	if (ft_strncmp(word, copy, 5) == strncmp(word, copy, 5))
+		printf("YES\n");
+	else
+		printf("NO\n");
+	if (ft_strncmp(word + 3, copy, 4) == strncmp(word + 3, copy, 4))
+		printf("YES\n");
+	else
+		printf("NO\n");
+	printf("Test ft_memcmp:\n");
+	printf("%s\'\n%s\'", word, copy);
+	if (ft_memcmp(word, copy, 5) == memcmp(word, copy, 5))
+		printf("YES\n");
+	else
+		printf("NO\n");
+	if (ft_memcmp(word, copy + 3, 4) == memcmp(word, copy + 3, 4))
+		printf("YES\n");
+	else
+		printf("NO %d %d\n", ft_memcmp(word, copy + 3, 4), memcmp(word, copy + 3, 4));
 	return (0);
 }
