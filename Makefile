@@ -20,7 +20,8 @@ SRC =		ft_bzero	\
 			ft_strlcpy	\
 			ft_strlcat	\
 			ft_atoi		\
-			ft_calloc	
+			ft_calloc	\
+			ft_strdup
 
 OBJ =		${SRC:=.o}
 CFLAGS =	-Wall -Wextra -Werror -g

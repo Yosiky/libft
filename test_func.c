@@ -19,6 +19,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 int		ft_atoi(const char *str);
+char	*ft_strdup(const char *s1);
 
 int	main(void)
 {
@@ -113,7 +114,9 @@ int	main(void)
 		printf("YES\n");
 	else
 		printf("NO %d %d\n", ft_memcmp(word + 3, copy, 4), memcmp(word + 3, copy, 4));
-	*/	
+	*/
+	// test for ft_strlcat
+	/*	
 	char	word[] = "Hello world!";
 	char	copy[20]; 
 	
@@ -141,6 +144,7 @@ int	main(void)
 	printf("\'%s\'\n", copy);
 	m = strlcat(copy, word, 20);
 	printf("\'%s\' %d\n", copy, m);
+	*/
 	// test for ft_strlcpy
 	/*
 	ft_memset(copy, 0, 20);
@@ -200,5 +204,11 @@ int	main(void)
 	ft_memcpy(value, "+1-23", 6);
 	printf("%d %d\n", ft_atoi(value), atoi(value));
 	*/
+	char	word[] = "Hello, world!asdf sadfjlkasdfj ";
+	char	*new_line;
+
+	new_line = ft_strdup(word);
+	printf("%s\n", new_line);
+	free(new_line);
 	return (0);
 }
