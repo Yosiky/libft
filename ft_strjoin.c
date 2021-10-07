@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 18:12:48 by eestelle          #+#    #+#             */
-/*   Updated: 2021/10/07 18:31:28 by eestelle         ###   ########.fr       */
+/*   Updated: 2021/10/07 18:35:36 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <stdlib.h>
 
 size_t	ft_strlen(const char *s);
-
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
