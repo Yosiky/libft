@@ -13,6 +13,8 @@ char	*ft_strrchr(const char *s, int c);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(void *s1, void *s2, size_t n);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+void	*ft_memmove(void *dst, const void *src, size_t len);
 
 int	main(void)
 {
@@ -108,5 +110,32 @@ int	main(void)
 	else
 		printf("NO %d %d\n", ft_memcmp(word + 3, copy, 4), memcmp(word + 3, copy, 4));
 	*/	
+	char	word[] = "Hello world!";
+	char	copy[20]; 
+
+	printf("Test one :");
+	ft_memmove(copy, word, ft_strlen(word));
+	printf("\'%s\'\n", copy);
+	printf("\'%s\'\n", ft_memmove(copy, copy + 3, 5));
+	ft_memmove(copy, word, ft_strlen(word));
+	printf("\'%s\'\n", copy);
+	printf("\'%s\'\n", memmove(copy, copy + 3, 5));
+	printf("Test two :");
+	ft_memmove(copy, word, ft_strlen(word));
+	printf("\'%s\'\n", copy);
+	printf("\'%s\'\n", ft_memmove(copy + 3, copy, 5));
+	ft_memmove(copy, word, ft_strlen(word));
+	printf("\'%s\'\n", copy);
+	printf("\'%s\'\n", memmove(copy + 3, copy, 5));
+
+	// test for ft_strnstr
+	/*
+	ft_memset(copy, 0, 20);
+	printf("\'%s\' \'%s\'\n", strnstr(word, copy, 1), ft_strnstr(word, copy, 1));
+	ft_memmove(copy, "el", 3);
+	printf("\'%s\' \'%s\'\n", strnstr(word, copy, 1), ft_strnstr(word, copy, 1));
+	printf("\'%s\' \'%s\'\n", strnstr(word, copy, 3), ft_strnstr(word, copy, 3));
+	printf("\'%s\' \'%s\'\n", strnstr(word, copy, 0), ft_strnstr(word, copy, 0));
+	*/
 	return (0);
 }
