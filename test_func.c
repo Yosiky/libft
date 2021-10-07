@@ -3,6 +3,7 @@
 #include <ctype.h>
 #include <stdlib.h>
 
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
 int		ft_tolower(int c);
@@ -205,10 +206,16 @@ int	main(void)
 	printf("%d %d\n", ft_atoi(value), atoi(value));
 	*/
 	char	word[] = "Hello, world!asdf sadfjlkasdfj ";
+	// test for ft_strdup
+	/*	
 	char	*new_line;
 
 	new_line = ft_strdup(word);
 	printf("%s\n", new_line);
 	free(new_line);
+	*/
+	char	*ptr_sub = ft_substr(word, 4, 10);
+	printf("%s", ptr_sub);
+	free(ptr_sub);
 	return (0);
 }
