@@ -16,7 +16,9 @@ SRC =		ft_bzero	\
 			ft_memcmp	\
 			ft_memchr	\
 			ft_memmove	\
-			ft_strnstr
+			ft_strnstr	\
+			ft_strlcpy	\
+			ft_strlcat
 
 OBJ =		${SRC:=.o}
 CFLAGS =	-Wall -Wextra -Werror -g

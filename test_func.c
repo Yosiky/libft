@@ -15,6 +15,8 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_memcmp(void *s1, void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 void	*ft_memmove(void *dst, const void *src, size_t len);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 int	main(void)
 {
@@ -112,7 +114,55 @@ int	main(void)
 	*/	
 	char	word[] = "Hello world!";
 	char	copy[20]; 
+	
+	ft_memset(copy, 0, 20);
+	printf("\'%s\'\n", copy);
+	int n = ft_strlcat(copy, word, 20);
+	printf("\'%s\' %d\n", copy, n);
 
+	ft_memset(copy, 0, 20);
+	printf("\'%s\'\n", copy);
+	int m = strlcat(copy, word, 20);
+	printf("\'%s\' %d\n", copy, m);
+	
+	printf("TEST2\n");
+	ft_memset(copy, 'a', 20);
+	ft_memcpy(copy, "World", 5);
+	copy[5] = 0;
+	printf("\'%s\'\n", copy);
+	n = ft_strlcat(copy, word, 20);
+	printf("\'%s\' %d\n", copy, n);
+
+	ft_memset(copy, 'a', 20);
+	ft_memcpy(copy, "World", 5);
+	copy[5] = 0;
+	printf("\'%s\'\n", copy);
+	m = strlcat(copy, word, 20);
+	printf("\'%s\' %d\n", copy, m);
+	// test for ft_strlcpy
+	/*
+	ft_memset(copy, 0, 20);
+	ft_memset(copy, 'a', 19);
+	printf("\'%s\'\n", copy);
+	int n = ft_strlcpy(copy, word, 20);
+	printf("\'%s\' %d\n", copy, n);
+	ft_memset(copy, 0, 20);
+	ft_memset(copy, 'a', 19);
+	int m = strlcpy(copy, word, 20);
+	printf("\'%s\' %d\n", copy, m);
+
+	ft_memset(copy, 0, 20);
+	ft_memset(copy, 'a', 19);
+	printf("TEST2\'%s\'\n", copy);
+	n = ft_strlcpy(copy, word, 10);
+	printf("\'%s\' %d\n", copy, n);
+	ft_memset(copy, 0, 20);
+	ft_memset(copy, 'a', 19);
+	m = strlcpy(copy, word, 10);
+	printf("\'%s\' %d\n", copy, m);
+	*/
+	// test for ft_memmove
+	/*
 	printf("Test one :");
 	ft_memmove(copy, word, ft_strlen(word));
 	printf("\'%s\'\n", copy);
@@ -127,7 +177,7 @@ int	main(void)
 	ft_memmove(copy, word, ft_strlen(word));
 	printf("\'%s\'\n", copy);
 	printf("\'%s\'\n", memmove(copy + 3, copy, 5));
-
+	*/
 	// test for ft_strnstr
 	/*
 	ft_memset(copy, 0, 20);
