@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/07 14:10:18 by eestelle          #+#    #+#             */
-/*   Updated: 2021/10/07 16:06:25 by eestelle         ###   ########.fr       */
+/*   Created: 2021/10/07 16:17:25 by eestelle          #+#    #+#             */
+/*   Updated: 2021/10/07 16:52:03 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <stdio.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+int	ft_isdigit(int c);
+
+int	ft_atoi(const char *str)
 {
-	size_t	i;
+	int		result;
+	char	sign;
 
-	i = 0;
-	while (i < dstsize - 1 && *dst)
+	result = 0;
+	sign = 1;
+	if (*str == '-' || *str == '+')
 	{
-		dst++;
-		i++;
+		if (*(str++) == '-')
+			sign = -1;
 	}
-	while (i < dstsize - 1 && *src != '\0')
-	{
-		*(dst++) = *(src++);
-		i++;
-	}
-	dst[i] = '\0';
-	while (*(src++))
-		i++;
-	return (i);
+	while (*str != '\0' && ft_isdigit(*str))
+		result = result * 10 + (*(str++) - '0');
+	return (result * sign);
 }

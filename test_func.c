@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 void	*ft_memset(void *s, int c, size_t n);
 void	ft_bzero(void *s, size_t n);
@@ -17,6 +18,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+int		ft_atoi(const char *str);
 
 int	main(void)
 {
@@ -139,6 +141,7 @@ int	main(void)
 	printf("\'%s\'\n", copy);
 	m = strlcat(copy, word, 20);
 	printf("\'%s\' %d\n", copy, m);
+	printf("%s", copy + 9);
 	// test for ft_strlcpy
 	/*
 	ft_memset(copy, 0, 20);
@@ -186,6 +189,17 @@ int	main(void)
 	printf("\'%s\' \'%s\'\n", strnstr(word, copy, 1), ft_strnstr(word, copy, 1));
 	printf("\'%s\' \'%s\'\n", strnstr(word, copy, 3), ft_strnstr(word, copy, 3));
 	printf("\'%s\' \'%s\'\n", strnstr(word, copy, 0), ft_strnstr(word, copy, 0));
+	*/
+	/*
+	char	value[] = "-123";
+
+	printf("\n");
+	printf("%d %d\n", ft_atoi(value), atoi(value));
+	printf("%d %d\n", ft_atoi(value + 1), atoi(value + 1));
+	ft_memcpy(value, "+-123", 6);
+	printf("%d %d\n", ft_atoi(value), atoi(value));
+	ft_memcpy(value, "+1-23", 6);
+	printf("%d %d\n", ft_atoi(value), atoi(value));
 	*/
 	return (0);
 }
