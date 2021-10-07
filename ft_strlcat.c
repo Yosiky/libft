@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 14:10:18 by eestelle          #+#    #+#             */
-/*   Updated: 2021/10/07 16:06:25 by eestelle         ###   ########.fr       */
+/*   Updated: 2021/10/07 17:02:41 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		*(dst++) = *(src++);
 		i++;
 	}
-	dst[i] = '\0';
+	*dst = '\0';
 	while (*(src++))
 		i++;
 	return (i);

@@ -141,7 +141,6 @@ int	main(void)
 	printf("\'%s\'\n", copy);
 	m = strlcat(copy, word, 20);
 	printf("\'%s\' %d\n", copy, m);
-	printf("%s", copy + 9);
 	// test for ft_strlcpy
 	/*
 	ft_memset(copy, 0, 20);
