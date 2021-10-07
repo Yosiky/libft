@@ -19,7 +19,8 @@ SRC =		ft_bzero	\
 			ft_strnstr	\
 			ft_strlcpy	\
 			ft_strlcat	\
-			ft_atoi
+			ft_atoi		\
+			ft_calloc	
 
 OBJ =		${SRC:=.o}
 CFLAGS =	-Wall -Wextra -Werror -g
@@ -40,7 +41,3 @@ fclean:
 	rm -rf ${RES}
 
 re: clean fclean all
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ)
