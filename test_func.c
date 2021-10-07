@@ -7,6 +7,7 @@ void	ft_bzero(void *s, size_t n);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 size_t	ft_strlen(const char *s);
+void	*ft_memchr(const void *s, int c, size_t n);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -47,8 +48,8 @@ int	main(void)
 	}
 	*/
 	// test strchr and strrchr
-	/*
 	char	s[] = "Hello world";
+	/*
 	printf("%s\n", ft_strchr(s, 'H'));
 	printf("%s\n", ft_strchr(s, 'e'));
 	printf("%s\n", ft_strchr(s, 'l'));
@@ -70,7 +71,19 @@ int	main(void)
 	printf("%s\n", ft_strrchr(s, '\0'));
 	printf("%s\n", ft_strrchr(s, 'a'));
 	*/
+	printf("%lu\n", ft_strlen(s));
+	printf("%s\n", (char *)ft_memchr(s, 'H', ft_strlen(s)));
+	printf("%s\n", (char *)ft_memchr(s, 'e', ft_strlen(s)));
+	printf("%s\n", (char *)ft_memchr(s, 'l', ft_strlen(s)));
+	printf("%s\n", (char *)ft_memchr(s, 'o', ft_strlen(s)));
+	printf("%s\n", (char *)ft_memchr(s, ' ', ft_strlen(s)));
+	printf("%s\n", (char *)ft_memchr(s, 'w', ft_strlen(s) - 5));
+	printf("%s\n", (char *)ft_memchr(s, 'r', ft_strlen(s)));
+	printf("%s\n", (char *)ft_memchr(s, 'd', ft_strlen(s)));
+	printf("%s\n", (char *)ft_memchr(s, '\0', ft_strlen(s) + 1));
+	printf("%s\n", (char *)ft_memchr(s, 'a', ft_strlen(s)));
 	// ft_strncmp ft_memcmp
+	/*
 	char	word[] = "Hello, world!";
 	char	copy[14];
 	printf("len(\"%s\") = %zu\n", word, ft_strlen(word));
@@ -93,5 +106,6 @@ int	main(void)
 		printf("YES\n");
 	else
 		printf("NO %d %d\n", ft_memcmp(word, copy + 3, 4), memcmp(word, copy + 3, 4));
+	*/
 	return (0);
 }

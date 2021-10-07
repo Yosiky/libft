@@ -1,5 +1,5 @@
 RES =		test_func
-SOURCE =	ft_bzero	\
+SRC =		ft_bzero	\
 			ft_isalnum	\
 			ft_isalpha	\
 			ft_isascii	\
@@ -11,23 +11,31 @@ SOURCE =	ft_bzero	\
 			ft_strlen	\
 			ft_strrchr	\
 			ft_tolower	\
-			ft_toupper
+			ft_toupper	\
+			ft_strncmp	\
+			ft_memcmp	\
+			ft_memchr
 
-OBJS =		${SOURCE:=.o}
-FLAGS =		-Wall -Wextra -Werror -g
+OBJ =		${SRC:=.o}
+CFLAGS =	-Wall -Wextra -Werror -g
+CC =		gcc
 
 .c.o:
-	gcc	${FLAGS} -c $< -o ${<:.c=.o}
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
 all:		${RES}
 
-${RES}:	${OBJS}
-	gcc ${OBJS} ${RES}.c -o ${RES}
+${RES}:	${OBJ}
+	gcc ${OBJ} ${RES}.c -g -o ${RES}
 
 clean:
-	rm -rf ${OBJS}
+	rm -rf ${OBJ}
 
 fclean:
 	rm -rf ${RES}
 
 re: clean fclean all
+
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
+	gcc -nostartfiles -shared -o libft.so $(OBJ)
