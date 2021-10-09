@@ -14,7 +14,7 @@
 
 typedef	unsigned long long	t_ull;
 
-t_ull	*ft_completion(t_ull *dest, t_ull **src, size_t len)
+static t_ull	*ft_completion(t_ull *dest, t_ull **src, size_t len)
 {
 	while (len--)
 	{
