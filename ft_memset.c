@@ -14,7 +14,7 @@
 
 typedef unsigned long long	t_ull;
 
-static	void	*ft_completion(t_ull *ptrs, size_t len, t_ull c)
+static	t_ull	*ft_completion(t_ull *ptrs, size_t len, t_ull c)
 {	
 	while (len--)
 	{
@@ -34,27 +34,30 @@ static	void	*ft_completion(t_ull *ptrs, size_t len, t_ull c)
 void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t		len;	
-	void		*ptrs;
+	t_ull		*ptrs;
+	char		*bptr;
 	t_ull		cccccccc;
 
-	ptrs = s;
+	bptr = (char *)s;
 	cccccccc = (unsigned char)c;
 	cccccccc |= cccccccc << 8;
 	cccccccc |= cccccccc << 16;
 	cccccccc |= cccccccc << 32;
-	ptrs = (void *)ft_completion((t_ull *)ptrs, n / 64, cccccccc);
+	while ((size_t)bptr % 8 && n--)
+		*(bptr++) = (unsigned char)c;
+	ptrs = (t_ull*)bptr;
+	len = n / 64;
+	if (len)
+		ptrs = ft_completion(ptrs, len, cccccccc);
 	len = (n % 64) / 8;
 	while (len)
 	{
-		*((t_ull *)ptrs) = cccccccc;
-		ptrs += 8;
+		*(ptrs++) = cccccccc;
 		len--;
 	}
 	len = n % 8;
+	bptr = (char *)ptrs;
 	while (len--)
-	{
-		((unsigned char *)ptrs)[0] = (unsigned char)c;
-		ptrs++;
-	}
+		*(bptr++) = (unsigned char)c;
 	return (s);
 }
