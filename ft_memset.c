@@ -33,20 +33,23 @@ static	t_ull	*ft_completion(t_ull *ptrs, size_t len, t_ull c)
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t		len;	
+	size_t		len;
 	t_ull		*ptrs;
 	char		*bptr;
 	t_ull		cccccccc;
 
-	bptr = (char *)s;
 	cccccccc = (unsigned char)c;
 	cccccccc |= cccccccc << 8;
 	cccccccc |= cccccccc << 16;
 	cccccccc |= cccccccc << 32;
-	while ((size_t)bptr % 8 && n--)
+	bptr = (char *)s;
+	while ((size_t)bptr % 8 && n > 0)
+	{
 		*(bptr++) = (unsigned char)c;
+		n--;
+	}
 	ptrs = (t_ull*)bptr;
-	len = n / 64;
+	len = (n) / 64;
 	if (len)
 		ptrs = ft_completion(ptrs, len, cccccccc);
 	len = (n % 64) / 8;
