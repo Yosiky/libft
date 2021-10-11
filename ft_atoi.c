@@ -12,7 +12,14 @@
 
 #include <stdio.h>
 
-int	ft_isdigit(int c);
+int			ft_isdigit(int c);
+
+static	int	ft_isspace(int c)
+{
+	return (c == '\f' || c == '\n' || c == '\r'
+			|| c == '\t' || c == '\v' || c == ' ');
+
+}
 
 int	ft_atoi(const char *str)
 {
@@ -21,6 +28,8 @@ int	ft_atoi(const char *str)
 
 	result = 0;
 	sign = 1;
+	while (ft_isspace(*(str)))
+		str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*(str++) == '-')
@@ -28,5 +37,5 @@ int	ft_atoi(const char *str)
 	}
 	while (*str != '\0' && ft_isdigit(*str))
 		result = result * 10 + (*(str++) - '0');
-	return (result * sign);
+	return (result * (int)sign);
 }
