@@ -12,12 +12,9 @@
 
 #include <stddef.h>
 
+void    *ft_memchr(const void *s, int c, size_t n);
+
 size_t	ft_strlen(const char *s)
 {
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	return ((size_t)ft_memchr(s, '\0', -1) - (size_t)s);
 }
