@@ -12,20 +12,20 @@
 
 #include <stddef.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
-{
-	char	*ptr_dst;
+typedef	unsigned long long	t_ull;
 
-	ptr_dst = dst;
-	if (dst < src)
-	{
-		while (len--)
-			*(ptr_dst++) = *((char *)src++);
-	}
+void	*ft_memcpy(void *dest, const void *src, size_t len);
+
+void	*ft_memmove(void *dest, const void *src, size_t len)
+{
+	if (dest == (void *)0 && src == (void *)0)
+		return ((void *)0);
+	if (dest < src)
+		ft_memcpy(dest, src, len);
 	else
 	{
 		while (len--)
-			ptr_dst[len] = ((char *)src)[len];
+			((char *)dest)[len] = ((char *)src)[len];
 	}
-	return (dst);
+	return (dest);
 }
