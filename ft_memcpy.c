@@ -47,7 +47,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	while ((size_t)bptr_dest % 8 && n--)
 		*(bptr_dest++) = *(bptr_src++);
 	ptr_dest = (t_ull *)bptr_dest;
-	ptr_src = (t_ull *)src;
+	ptr_src = (t_ull *)bptr_src;
 	len = (n) / 64;
 	if (len)
 		ptr_dest = ft_completion(ptr_dest, &ptr_src, len); 
