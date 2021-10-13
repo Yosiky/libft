@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 typedef	unsigned long long	t_ull;
 
@@ -46,7 +46,9 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	bptr_src = (char *)src;
 	while ((size_t)bptr_dest % 8 && n--)
 		*(bptr_dest++) = *(bptr_src++);
-	ptr_dest = (t_ull *)bptr_dest;
+    if ((n + 1) == 0)
+        return (dest);
+    ptr_dest = (t_ull *)bptr_dest;
 	ptr_src = (t_ull *)bptr_src;
 	len = (n) / 64;
 	if (len)

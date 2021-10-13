@@ -1,9 +1,4 @@
-#include <stdlib.h>
-#include <stddef.h>
-
-char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *s1);
-void    *ft_strlcpy(void *dest, const void *src, size_t n);
+#include "libft.h"
 
 static size_t	find_count(char const *s, char c)
 {
@@ -30,10 +25,8 @@ char	**ft_split(char const *s, char c)
 	char	**result;
 	char	*iter;
 
-	result = (char **)0;
 	i = 0;
 	count = find_count(s, c);
-	
 	result = (char **)malloc(sizeof(char *) * (count + 1));
 	result[count] = (char *)0;
 	while (i < count)

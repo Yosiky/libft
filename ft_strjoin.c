@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
-
-size_t	ft_strlen(const char *s);
-void	*ft_memmove(void *dest, const void *src, size_t len);
+#include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -27,7 +23,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	result = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (result == (void *)0)
 		return (result);
-	ft_memmove(result, s1, len_s1);
-	ft_memmove(result + len_s1, s2, len_s2 + 1);
+	ft_memcpy(result, s1, len_s1);
+	ft_memcpy(result + len_s1, s2, len_s2 + 1);
 	return (result);
 }

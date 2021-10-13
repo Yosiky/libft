@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stddef.h>
-
-void	*ft_memset(void *s, int c, size_t n);
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

@@ -1,9 +1,4 @@
-#include <stddef.h>
-#include <stdlib.h>
-
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
-void    *ft_strlcpy(void *dest, const void *src, size_t n);
+#include "libft.h"
 
 static	size_t	skip_begin(char const *s1, char const *set)
 {

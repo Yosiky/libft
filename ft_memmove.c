@@ -10,11 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 typedef	unsigned long long	t_ull;
-
-void	*ft_memcpy(void *dest, const void *src, size_t len);
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {
