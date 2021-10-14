@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 18:41:21 by eestelle          #+#    #+#             */
-/*   Updated: 2021/10/04 18:48:16 by eestelle         ###   ########.fr       */
+/*   Updated: 2021/10/14 20:23:49 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,18 @@ static	t_ull	*ft_completion(t_ull *ptrs, size_t len, t_ull c)
 	return (ptrs);
 }
 
-void	*ft_memset(void *s, int c, size_t n)
+void	ft_fast_completion(char *bs, size_t n, int c)
 {
 	size_t		len;
 	t_ull		*ptrs;
-	char		*bptr;
 	t_ull		cccccccc;
 
 	cccccccc = (unsigned char)c;
 	cccccccc |= cccccccc << 8;
 	cccccccc |= cccccccc << 16;
 	cccccccc |= cccccccc << 32;
-	bptr = (char *)s;
-	while ((size_t)bptr % 8 && n > 0)
-	{
-		*(bptr++) = (unsigned char)c;
-		n--;
-	}
-	ptrs = (t_ull*)bptr;
-	len = (n) / 64;
+	ptrs = (t_ull *)bs;
+	len = n / 64;
 	if (len)
 		ptrs = ft_completion(ptrs, len, cccccccc);
 	len = (n % 64) / 8;
@@ -59,8 +52,23 @@ void	*ft_memset(void *s, int c, size_t n)
 		len--;
 	}
 	len = n % 8;
-	bptr = (char *)ptrs;
+	bs = (char *)ptrs;
 	while (len--)
+		*(bs++) = (unsigned char)c;
+}
+
+void	*ft_memset(void *s, int c, size_t n)
+{
+	char		*bptr;
+
+	bptr = (char *)s;
+	while ((size_t)bptr % 8 && n)
+	{
 		*(bptr++) = (unsigned char)c;
+		n--;
+	}
+	if (!n)
+		return (s);
+	ft_fast_completion(bptr, n, c);
 	return (s);
 }

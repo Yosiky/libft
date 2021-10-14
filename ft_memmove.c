@@ -6,13 +6,13 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 13:03:41 by eestelle          #+#    #+#             */
-/*   Updated: 2021/10/07 13:35:50 by eestelle         ###   ########.fr       */
+/*   Updated: 2021/10/14 19:59:34 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-typedef	unsigned long long	t_ull;
+typedef unsigned long long	t_ull;
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {

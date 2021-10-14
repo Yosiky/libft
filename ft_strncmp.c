@@ -6,13 +6,11 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 17:07:18 by eestelle          #+#    #+#             */
-/*   Updated: 2021/10/14 14:22:23 by eestelle         ###   ########.fr       */
+/*   Updated: 2021/10/14 20:35:21 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-typedef	unsigned long long	t_ull;
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {

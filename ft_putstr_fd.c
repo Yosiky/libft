@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 18:39:54 by eestelle          #+#    #+#             */
-/*   Updated: 2021/10/14 18:39:56 by eestelle         ###   ########.fr       */
+/*   Updated: 2021/10/14 20:27:37 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-    if (!s)
-        return ;
+	if (!s)
+		return ;
 	write(fd, s, ft_strlen(s));
 }
