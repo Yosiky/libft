@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/14 18:40:02 by eestelle          #+#    #+#             */
+/*   Updated: 2021/10/14 18:40:04 by eestelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	find_count(char const *s, char c)
@@ -17,6 +29,14 @@ static size_t	find_count(char const *s, char c)
 	return (count);
 }
 
+static void ft_arrdel(char **arr, size_t len)
+{
+    while (len--)
+        free(arr[len]);
+    free(arr);
+}
+
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	count;
@@ -25,9 +45,13 @@ char	**ft_split(char const *s, char c)
 	char	**result;
 	char	*iter;
 
+    if (!s)
+        return ((void *)0);
 	i = 0;
 	count = find_count(s, c);
 	result = (char **)malloc(sizeof(char *) * (count + 1));
+    if (!result)
+        return ((void *)0);
 	result[count] = (char *)0;
 	while (i < count)
 	{
@@ -40,6 +64,11 @@ char	**ft_split(char const *s, char c)
 		{
 			len = (size_t)iter - (size_t)s;
 			result[i] = (char *)malloc(sizeof(char) * (len + 1));
+            if (!result[i])
+            {
+                ft_arrdel(result, i + 1);
+                return ((void *)0);
+            }
 			ft_strlcpy(result[i], s, len + 1);
 			result[i++][len] = '\0';
 			s = iter;

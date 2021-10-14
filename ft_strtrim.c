@@ -1,38 +1,45 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/14 18:40:45 by eestelle          #+#    #+#             */
+/*   Updated: 2021/10/14 18:40:46 by eestelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static	size_t	skip_begin(char const *s1, char const *set)
+static	void	skip_begin(char const **s1, char const *set)
 {
-	size_t	start;
-
-	start = 0;
-	while (ft_strchr(set, s1[start]) != (char *)0)
-			start++;
-	return (start);
+    while (**s1 && ft_strchr(set, **s1) != (void *)0)
+        (*s1)++;
 }
 
-static	size_t	skip_end(char const *s1, char const *set, size_t i, size_t s)
+static	size_t	skip_end(char const *s1, char const *set, size_t i)
 {
-	size_t	end;
-
-	end = s;
-	while (i < end && ft_strchr(set, s1[end]) != (char *)0)
-		end--;
-	return (end);
+    while (i > 0 && ft_strrchr(set, s1[i - 1]) != (void *)0)
+        i--;
+	return (i);
 
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*result;
-	size_t	start;
 	size_t	end;
 
-	start = skip_begin(s1, set);
-	end = ft_strlen(s1) - 1;
-	end = skip_end(s1, set, start, end);
-	result = (char *)malloc(sizeof(char) * (end - start + 2));
+    if (!s1 || !set)
+        return ((void *)0);
+	skip_begin(&s1, set);
+	end = ft_strlen(s1);
+    if (end)
+        end = skip_end(s1, set, end);
+	result = (char *)malloc(sizeof(char) * (end + 1));
 	if (result == (char *)0)
 		return (result);
-	ft_strlcpy(result, s1 + start, end - start + 2);
+	ft_strlcpy(result, s1, end + 1);
 	return (result);
 }

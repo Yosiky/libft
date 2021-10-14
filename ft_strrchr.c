@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 19:30:38 by eestelle          #+#    #+#             */
-/*   Updated: 2021/10/04 19:42:14 by eestelle         ###   ########.fr       */
+/*   Updated: 2021/10/14 12:28:12 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*ft_strrchr(const char *s, int c)
 	iter = (void *)0;
 	while (*s)
 	{
-		if (*s == c)
+		if (*s == (char)c)
 			iter = (char *)s;
 		s++;
 	}
-	if (*s == c)
+	if (*s == (char)c)
 		iter = (char *)s;
 	return (iter);
 }

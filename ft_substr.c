@@ -17,16 +17,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	len_str;
 	char	*result;
 
+    if (!s)
+        return ((void *)0);
 	len_str = ft_strlen(s);
 	if (start > len_str)
 		start = len_str;
-	if (len_str - start > len)
+	if (len_str - start >= len)
 		len_str = len;
 	else
 		len_str = len_str - start;
 	result = (char *)malloc(sizeof(char) * (len_str + 1));
 	if (result == (void *)0)
-		return (result);
+		return ((void *)0);
 	ft_strlcpy(result, s + start, len_str + 1);
 	return (result);
 }

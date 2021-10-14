@@ -42,7 +42,7 @@ SRC =		ft_bzero.c	\
 			ft_lstdelone.c		\
 			ft_lstclear.c		\
 			ft_lstiter.c		\
-		#	ft_lstmap.c			
+			ft_lstmap.c			
 
 OBJ =		${SRC:.c=.o}
 CFLAGS =	-Wall -Wextra -Werror -g
@@ -57,8 +57,9 @@ all:		${NAME}
 ${NAME}:	${OBJ}
 	ar cr ${NAME}.a ${OBJ}
 
-${RES}:		${OBJ}
+${RES}:		fclean	${OBJ}
 	gcc ${OBJ} ${RES}.c -g -o ${RES}
+	./${RES}
 
 clean:
 	rm -rf ${OBJ}
