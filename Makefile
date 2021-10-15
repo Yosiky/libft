@@ -1,71 +1,81 @@
-RES =		test_func
 NAME =		libft
-SRC =		ft_bzero.c	\
-			ft_isalnum.c\
-			ft_isalpha.c	\
-			ft_isascii.c	\
-		   	ft_isdigit.c	\
-			ft_isprint.c	\
-			ft_memcpy.c	\
-			ft_memset.c	\
-			ft_strchr.c	\
-			ft_strlen.c	\
-			ft_strrchr.c	\
-			ft_tolower.c	\
-			ft_toupper.c	\
-			ft_strncmp.c	\
-			ft_memcmp.c	\
-			ft_memchr.c	\
-			ft_memmove.c	\
-			ft_strnstr.c	\
-			ft_strlcpy.c	\
-			ft_strlcat.c	\
-			ft_atoi.c	\
-			ft_calloc.c	\
-			ft_strdup.c	\
-			ft_substr.c	\
-			ft_strjoin.c	\
-			ft_strtrim.c	\
-			ft_split.c	\
-			ft_itoa.c	\
-			ft_strmapi.c	\
-			ft_striteri.c	\
-			ft_putchar_fd.c	\
-			ft_putstr_fd.c	\
-			ft_putendl_fd.c	\
-			ft_putnbr_fd.c	\
-			ft_lstnew.c		\
-			ft_lstadd_front.c	\
-			ft_lstsize.c		\
-			ft_lstlast.c		\
-			ft_lstadd_back.c	\
-			ft_lstdelone.c		\
-			ft_lstclear.c		\
-			ft_lstiter.c		\
-			ft_lstmap.c			
 
-OBJ =		${SRC:.c=.o}
+SRC =		\
+			ft_atoi			\
+			ft_bzero		\
+			ft_calloc		\
+			ft_isalnum		\
+			ft_isalpha		\
+			ft_isascii		\
+			ft_isdigit		\
+			ft_isprint		\
+			ft_itoa			\
+			ft_memchr		\
+			ft_memcmp		\
+			ft_memcpy		\
+			ft_memmove		\
+			ft_memset		\
+			ft_putchar_fd	\
+			ft_putendl_fd	\
+			ft_putnbr_fd	\
+			ft_putstr_fd	\
+			ft_split		\
+			ft_strchr		\
+			ft_strdup		\
+			ft_striteri		\
+			ft_strjoin		\
+			ft_strlcat		\
+			ft_strlcpy		\
+			ft_strlen		\
+			ft_strmapi		\
+			ft_strncmp		\
+			ft_strnstr		\
+			ft_strrchr		\
+			ft_strtrim		\
+			ft_substr		\
+			ft_tolower		\
+			ft_toupper
+
+SRC_BONUS =	\
+			ft_lstadd_back	\
+			ft_lstadd_front	\
+			ft_lstclear		\
+			ft_lstdelone	\
+			ft_lstiter		\
+			ft_lstlast		\
+			ft_lstmap		\
+			ft_lstnew		\
+			ft_lstsize
+
+OBJS_DIR =	objects
+
+OBJ =		${addprefix ${OBJS_DIR}/,${SRC:=.o}}
+OBJ_BONUS =	${addprefix ${OBJS_DIR}/,${SRC_BONUS:=.o}}
+
 CFLAGS =	-Wall -Wextra -Werror -g 
 #-O3 -ffast-math
 CC =		gcc
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+$(OBJS_DIR)/%.o: %.c		
+	${CC} ${CFLAGS} -c $< -o $@
 
-all:		${NAME}
+all:		install ${NAME}
 
-${NAME}:	${OBJ}
+${NAME}:	install ${OBJ}
 	ar cr ${NAME}.a ${OBJ}
 
+bonus:		${OBJ} ${OBJ_BONUS}
+	ar cr ${NAME}.a ${OBJ} ${OBJ_BONUS}
+
+install:
+	mkdir -p ${OBJS_DIR}
+
 clean:
-	rm -rf ${OBJ}
+	rm -rf ${OBJ} ${OBJ_BONUS}
 
 fclean: 	clean
 	rm -rf ${NAME}.a
 
-re: 		clean	\
+re:			\
 			fclean	\
 			all
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	$(CC) -nostartfiles -shared -o libft.so $(OBJ)

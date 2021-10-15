@@ -47,8 +47,8 @@ char	*ft_itoa(int n)
 	if (n == 0)
 		return (ft_strdup("0"));
 	result = (char *)malloc(sizeof(char) * (len + 1));
-	if (result == (void *)0)
-		return ((void *)0);
+	if (result == NULL)
+		return (NULL);
 	ft_completion(result, n, len);
 	return (result);
 }

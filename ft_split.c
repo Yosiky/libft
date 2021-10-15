@@ -34,7 +34,7 @@ static void	*ft_arrdel(char **arr, size_t len)
 	while (len--)
 		free(arr[len]);
 	free(arr);
-	return ((void *)0);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -45,21 +45,21 @@ char	**ft_split(char const *s, char c)
 	char	*iter;
 
 	if (!s)
-		return ((void *)0);
+		return (NULL);
 	count = find_count(s, c);
 	result = (char **)malloc(sizeof(char *) * (count + 1));
 	if (!result)
-		return ((void *)0);
-	result[count] = (char *)0;
+		return (NULL);
+	result[count] = NULL;
 	i = 0;
 	while (i < count)
 	{
-		while (*s == c && *s && s != (char *)0)
+		while (*s == c && *s && s != NULL)
 			s++;
 		iter = ft_strchr(s, c);
 		result[i] = ft_substr(s, 0, (size_t)iter - (size_t)s);
 		if (!result[i++])
-			return (ft_arrdel(result, i));
+			return ((char **)ft_arrdel(result, i));
 		s = iter;
 	}
 	return (result);

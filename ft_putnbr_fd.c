@@ -12,31 +12,28 @@
 
 #include "libft.h"
 
-static int	g_fd;
-
-static	void	rec(long long n)
-{
-	char	sym;
-
-	if (!n)
-		return ;
-	rec(n / 10);
-	sym = '0' + n % 10;
-	write(g_fd, &sym, 1);
-}
-
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	sign;
+	char		arr[10];
+	size_t		len;
+	long long	value;
 
-	sign = 1;
-	g_fd = fd;
-	if (n < 0)
+	value = n;
+	if (value < 0)
 	{
 		write(fd, "-", 1);
-		sign = -1;
+		value *= -1;
 	}
-	else if (n == 0)
+	else if (value == 0)
+	{
 		write(fd, "0", 1);
-	rec((long long)n * sign);
+		return ;
+	}
+	len = 0;
+	while (value)
+	{
+		arr[10 - 1 - (len++)] = '0' + value % 10;
+		value /= 10;
+	}
+	write(fd, arr + 10 - len, len);
 }

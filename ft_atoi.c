@@ -33,6 +33,15 @@ int	ft_atoi(const char *str)
 			sign = -1;
 	}
 	while (*str != '\0' && ft_isdigit(*str))
+	{
 		result = result * 10 + (*(str++) - '0');
+		if (result < 0)
+		{
+			if (sign == 1)
+				return (INT_MAX);
+			else
+				return (INT_MIN);
+		}
+	}
 	return (result * (int)sign);
 }

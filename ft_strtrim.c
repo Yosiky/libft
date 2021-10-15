@@ -31,13 +31,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 
 	if (!s1 || !set)
-		return ((void *)0);
+		return (NULL);
 	skip_begin(&s1, set);
 	end = ft_strlen(s1);
 	if (end)
 		end = skip_end(s1, set, end);
 	result = (char *)malloc(sizeof(char) * (end + 1));
-	if (result == (char *)0)
+	if (result == NULL)
 		return (result);
 	ft_strlcpy(result, s1, end + 1);
 	return (result);
