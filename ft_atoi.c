@@ -6,7 +6,7 @@
 /*   By: eestelle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 16:17:25 by eestelle          #+#    #+#             */
-/*   Updated: 2021/10/14 18:49:14 by eestelle         ###   ########.fr       */
+/*   Updated: 2021/10/16 16:38:09 by eestelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ int	ft_atoi(const char *str)
 	}
 	while (*str != '\0' && ft_isdigit(*str))
 	{
-		result = result * 10 + (*(str++) - '0');
 		if (result < 0)
 		{
 			if (sign == 1)
-				return (INT_MAX);
+				return (-1);
 			else
-				return (INT_MIN);
+				return (0);
 		}
+		result = result * 10 + (*(str++) - '0');
 	}
 	return (result * (int)sign);
 }
