@@ -1,4 +1,4 @@
-NAME =		libft
+NAME =		libft.a
 
 SRC =		\
 			ft_atoi			\
@@ -49,6 +49,8 @@ SRC_BONUS =	\
 
 OBJS_DIR =	objects
 
+.PHONY:		all clean fclean bonus re
+
 OBJ =		${addprefix ${OBJS_DIR}/,${SRC:=.o}}
 OBJ_BONUS =	${addprefix ${OBJS_DIR}/,${SRC_BONUS:=.o}}
 
@@ -59,22 +61,22 @@ CC =		gcc
 $(OBJS_DIR)/%.o: %.c		
 	${CC} ${CFLAGS} -c $< -o $@
 
-all:		install ${NAME}
+$(NAME):	${OBJS_DIR} ${OBJ}
+	ar cr ${NAME} ${OBJ}
 
-${NAME}:	install ${OBJ}
-	ar cr ${NAME}.a ${OBJ}
+all:		${NAME}
 
 bonus:		${OBJ} ${OBJ_BONUS}
-	ar cr ${NAME}.a ${OBJ} ${OBJ_BONUS}
+	ar cr ${NAME} ${OBJ} ${OBJ_BONUS}
 
-install:
+${OBJS_DIR}:
 	mkdir -p ${OBJS_DIR}
 
 clean:
 	rm -rf ${OBJ} ${OBJ_BONUS}
 
 fclean: 	clean
-	rm -rf ${NAME}.a
+	rm -rf ${NAME}
 
 re:			\
 			fclean	\
