@@ -65,7 +65,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	while ((size_t)bptr % 8 && n)
 	{
 		*(bptr++) = (unsigned char)c;
-		n--;
+		--n;
 	}
 	if (!n)
 		return (s);
