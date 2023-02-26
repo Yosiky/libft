@@ -54,11 +54,11 @@ OBJS_DIR =	objects
 OBJ =		${addprefix ${OBJS_DIR}/,${SRC:=.o}}
 OBJ_BONUS =	${addprefix ${OBJS_DIR}/,${SRC_BONUS:=.o}}
 
-CFLAGS =	-Wall -Wextra -Werror -g 
+CFLAGS =	-Wall -Wextra -Werror -g3 -O0
 #-O3 -ffast-math
-CC =		gcc
+CC =		clang
 
-$(OBJS_DIR)/%.o: %.c		
+$(OBJS_DIR)/%.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 
 $(NAME):	${OBJS_DIR} ${OBJ}
